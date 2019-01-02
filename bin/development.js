@@ -2,6 +2,10 @@ const fs = require('fs');
 const path = require('path');
 require('shelljs/global');
 const inquirer = require('inquirer');
+const fileSys = require('./fileSystem');
+
+
+
 let __srcname = path.resolve(__dirname, '..');
 inquirer.prompt([{
     name: 'env',
@@ -9,7 +13,9 @@ inquirer.prompt([{
     type: 'list',
     default: 'dev',
     choices: ['dev', 'prepub', 'prod']
-}]).then(function (answers) {
+}])
+.then(changeEnv)
+.then(function () {
     var cmd = `npm run build:weapp -- --watch`;
 
     console.log();
@@ -19,17 +25,18 @@ inquirer.prompt([{
 
     exec(cmd);
 });
-// fs.readFile(__srcname + '/src/env.js', (err, data) => {
-//     if (err) {
-//         console.log('获取环境文件失败');
-//         return false;
-//     }
-//     let str = data.toString();
-//     str = str.replace('dev', env);
-//     fs.writeFile(__srcname + '/src/env.js', str, (err) => {
-//         if (err) throw err;
-//         console.log('The file has been saved!');
-//         exec('npm run build:weapp -- --watch');
-//     });
-   
-// });
+
+
+function changeEnv(answers) {
+    let envPath = `${__srcname}/src/env.js`;
+    const replaceEnv = function(res) {
+        let match = /BUILD_ENV\s*\=\s*\'[a-z]*\'/;
+        let newMatch = /BUILD_ENV\s*\=\s*\'/;
+        let envStr = res.match(match)[0];
+        let newEnvStr = `${res.match(newMatch)[0]}${answers.env}'`;
+        res = res.replace(envStr, newEnvStr);
+        fileSys.writeFile(envPath, res);
+    }
+    return fileSys.readfile(envPath)
+        .then(replaceEnv)
+}

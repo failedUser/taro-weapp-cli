@@ -15,8 +15,12 @@ module.exports = {
         })
 
     },
-    writeFile: function(path, str, cb) {
+    writeFile: function(path, str) {
         return new Promise((resolve, reject) => {
+            if (!str || typeof str !== 'string') {
+                reject('读取文件的格式不对');
+                return false;
+            }
             fs.writeFile(path, str, (err) => {
                 if (err) reject(err);
                 resolve();
