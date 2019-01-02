@@ -33,7 +33,7 @@ inquirer.prompt([
     console.log();
     console.log('   building...');
 
-    // exec(cmd);
+    exec(cmd);
 });
 
 
@@ -61,7 +61,12 @@ function changeUrlConfig(answers) {
     const setNewConfig = function(str) {
        return fileSys.writeFile(writeUrl, str).then(() => answers);
     }
-    return fileSys.readfile(url).then(setNewConfig)
+    return fileSys.readfile(url)
+    .then(setNewConfig)
+    .catch(e => {
+        console.error('\n无法正确访问到', `${__srcname}/groups/${answers.group}/urlConfig.js`, '请检查group下面的配置文件\n');
+        return Promise.reject(e);
+    });
 }
 
 function getGroupsDir() {

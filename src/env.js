@@ -1,5 +1,5 @@
 const Taro = require('@tarojs/taro');
-const BUILD_ENV = 'prepub';
+const BUILD_ENV = 'dev';
 /**
  * 挂在全局实例属性
  * 相当于小程序的getApp();

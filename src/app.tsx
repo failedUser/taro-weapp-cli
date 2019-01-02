@@ -55,6 +55,7 @@ class App extends Component {
     }
   }
   componentDidMount () {
+    //初始化微信app实例
     env.call(this);
   }
   componentDidShow () {}
