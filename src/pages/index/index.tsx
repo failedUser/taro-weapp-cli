@@ -40,17 +40,6 @@ class Index extends Component {
   }
 
   componentDidMount () {
-
-    httpRequest('postTest')
-    .then(res => {
-      console.log(res);
-    })
-    httpRequest('postTest2')
-    .catch(res => {
-      console.log(res);
-    });
-    httpRequest('getTest');
-    httpRequest('getTest2');
   }
 
   componentWillUnmount () { }

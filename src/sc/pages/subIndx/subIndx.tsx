@@ -66,7 +66,7 @@ class subIndx extends Component {
         return (
             <View className='index'>
                 333
-      </View>
+            </View>
         )
     }
 }
