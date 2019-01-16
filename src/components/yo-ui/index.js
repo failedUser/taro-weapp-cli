@@ -1,5 +1,6 @@
 import Flex from './flex/flex';
 import SoIcon from './icon/icon';
+import SoLabel from './label/label';
 
 /**
  * 这个文件夹中的color和image不能对外抛出是因为
@@ -9,5 +10,6 @@ import SoIcon from './icon/icon';
  */
 export {
     Flex,
-    SoIcon
+    SoIcon,
+    SoLabel
 }

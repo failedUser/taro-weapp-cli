@@ -1,7 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-import { Flex, SoIcon } from '../../components/yo-ui';
+import { Flex, SoIcon, SoLabel } from '../../components/yo-ui';
 import SoColor from '../../components/yo-ui/color';
 import './test.less'
 
@@ -63,6 +63,10 @@ class test extends Component {
     }
     iconList = ['checkBox', 'choose', 'close', 'deleteIcon', 'label', 'location', 'radio', 'rightArrow', 'search', 'triangle'];
 
+
+    labelClickHandle() {
+        console.log('点击了label', this.state);
+    }
     render() {
         return (
             <View className='index'>
@@ -146,6 +150,16 @@ class test extends Component {
                                 </Flex>
                             </View>
                         ) : null
+                    }) : null
+                }
+                <View onClick={this.showSection.bind(this)} data-type='label' className='section'>Label组件</View>
+                {
+                    this.isShow('label') ? ['red', 'blue'].map(el => {
+                        return (
+                            <SoLabel key={el} text='Label' color={el} onClick={this.labelClickHandle.bind(this)} styles={{
+                                'margin-right': '12px'
+                            }}></SoLabel>
+                        )
                     }) : null
                 }
             </View>
