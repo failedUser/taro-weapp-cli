@@ -25,7 +25,8 @@ class SoIcon extends PureComponent {
         } = this.props;
         return {
             height: `${height}px`,
-            width: `${width}px`
+            width: `${width}px`,
+            'line-height': `${height}px`
         }
     }
 
@@ -54,16 +55,20 @@ class SoIcon extends PureComponent {
     render() {
         let sizeProps = this.getBaseStyle();
         let colorProps = this.getColorProps();
+        console.log(sizeProps, colorProps, this.getImage());
         return (
-            <View style={{
-                display: 'inline-block',
-                overflow: 'hidden',
-                ...sizeProps
-            }}>
-                <Image style={{
-                    ...sizeProps,
-                    ...colorProps
-                }} src={this.getImage()}></Image>
+            <View className='icon'>
+                <View style={{
+                    display: 'inline-block',
+                    overflow: 'hidden',
+                    'text-align': 'center',
+                    ...sizeProps
+                }}>
+                    <Image style={{
+                        ...sizeProps,
+                        ...colorProps
+                    }} src={this.getImage()}></Image>
+                </View>
             </View>
         )
     }

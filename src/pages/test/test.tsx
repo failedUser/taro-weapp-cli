@@ -1,7 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-import { Flex, SoIcon, SoLabel } from '../../components/yo-ui';
+import { Flex, SoIcon, SoLabel, SoButton } from '../../components/yo-ui';
 import SoColor from '../../components/yo-ui/color';
 import './test.less'
 
@@ -74,7 +74,7 @@ class test extends Component {
                 {
                     this.isShow('flex') ? 
                     (
-                        <View>
+                            <View className='transitionAll'>
                             <View className='sub-title' >默认样式</View>
                             <Flex direction={this.state.direction} >
                                 <Text className='testText'></Text>
@@ -113,7 +113,7 @@ class test extends Component {
                     {
                         this.isShow('icon') ? this.iconList.map(el => {
                             return (
-                                <View key={el}>
+                                <View className='transitionAll' key={el}>
                                     <Flex jc='flex-start'  fd='column' styles={{
                                         width: '125px'
                                     }}>
@@ -135,7 +135,9 @@ class test extends Component {
                 {
                     this.isShow('color') ? Object.keys(SoColor).map(el => {
                         return el.indexOf('Desc') < 0 ? (
-                            <View key={el} style={{
+                            <View key={el} 
+                                className='transitionAll'
+                            style={{
                                 height: '40px',
                                 background: SoColor[el],
                                 color: 'white',
@@ -161,6 +163,28 @@ class test extends Component {
                             }}></SoLabel>
                         )
                     }) : null
+                }
+                <View onClick={this.showSection.bind(this)} data-type='button' className='section'>Button组件</View>
+                {
+                    this.isShow('button') ? 
+                        <View class="test-buttons transitionAll">
+                            <SoButton buttonStyle={{'margin-right': '10px', 'margin-bottom': '10px'}} type='primary' >primary</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='default '>default</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} size='md' type='primary' >primary</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='default' size='md'>default</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} size='lg' type='primary' >primary</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='default ' size='lg' >default</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} size='lg' type='border' >primary</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='border' size='sm' >default</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} size='lg' type='plain' >幽灵按钮</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='plain' size='sm' >幽灵按钮</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} disabled={true} type='primary' >disabled</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} disabled={true} type='default '>disabled</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='plain' size='lg' icon="rightArrow" >幽灵按钮</SoButton>
+                            <SoButton buttonStyle={{'margin-right': '10px', 'margin-bottom': '10px'}} type='primary' siez='lg' icon="rightArrow" >primary</SoButton>
+                        </View>
+                        
+                    : null
                 }
             </View>
 
