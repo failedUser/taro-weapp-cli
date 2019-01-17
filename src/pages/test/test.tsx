@@ -1,7 +1,7 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View, Button, Text } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
-import { Flex, SoIcon, SoLabel, SoButton } from '../../components/yo-ui';
+import { Flex, SoIcon, SoLabel, SoButton, ListItem } from '../../components/yo-ui';
 import SoColor from '../../components/yo-ui/color';
 import './test.less'
 
@@ -36,7 +36,7 @@ class test extends Component {
     }
     state = {
         direction: 'row',
-        showList: []
+        showList: ['list']
     }
 
     componentWillMount() {
@@ -185,6 +185,15 @@ class test extends Component {
                         </View>
                         
                     : null
+                }
+                <View onClick={this.showSection.bind(this)} data-type='list' className='section'>List组件</View>
+                {
+                    this.isShow('list') ? (
+                        <ListItem
+                            icon='close'
+
+                        ></ListItem>
+                    ) : null
                 }
             </View>
 

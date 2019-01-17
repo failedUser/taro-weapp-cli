@@ -2,6 +2,7 @@ import Flex from './flex/flex';
 import SoIcon from './icon/icon';
 import SoLabel from './label/label';
 import SoButton from './button/button';
+import ListItem from './ListItem/ListItem';
 
 /**
  * 这个文件夹中的color和image不能对外抛出是因为
@@ -13,5 +14,6 @@ export {
     Flex,
     SoIcon,
     SoLabel,
-    SoButton
+    SoButton,
+    ListItem
 }
