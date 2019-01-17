@@ -169,19 +169,19 @@ class test extends Component {
                     this.isShow('button') ? 
                         <View class="test-buttons transitionAll">
                             <SoButton buttonStyle={{'margin-right': '10px', 'margin-bottom': '10px'}} type='primary' >primary</SoButton>
-                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='default '>default</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='default'>default</SoButton>
                             <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} size='md' type='primary' >primary</SoButton>
                             <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='default' size='md'>default</SoButton>
                             <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} size='lg' type='primary' >primary</SoButton>
-                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='default ' size='lg' >default</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='default' size='lg' >default</SoButton>
                             <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} size='lg' type='border' >primary</SoButton>
                             <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='border' size='sm' >default</SoButton>
                             <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} size='lg' type='plain' >幽灵按钮</SoButton>
                             <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='plain' size='sm' >幽灵按钮</SoButton>
                             <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} disabled={true} type='primary' >disabled</SoButton>
-                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} disabled={true} type='default '>disabled</SoButton>
-                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='plain' size='lg' icon="rightArrow" >幽灵按钮</SoButton>
-                            <SoButton buttonStyle={{'margin-right': '10px', 'margin-bottom': '10px'}} type='primary' siez='lg' icon="rightArrow" >primary</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} disabled={true} type='default'>disabled</SoButton>
+                            <SoButton buttonStyle={{ 'margin-right': '10px', 'margin-bottom': '10px' }} type='plain' size='lg' icon="rightArrow" onClick={this.labelClickHandle.bind(this)} >幽灵按钮</SoButton>
+                            <SoButton buttonStyle={{'margin-right': '10px', 'margin-bottom': '10px'}} type='primary' siez='lg' icon="rightArrow" onClick={this.labelClickHandle.bind(this)} >primary</SoButton>
                         </View>
                         
                     : null

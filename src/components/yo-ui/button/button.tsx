@@ -19,11 +19,16 @@ class SoButton extends PureComponent {
         color: Color.main,
         buttonTextStyle: {},
         borderRadius: 8,
-        buttonStyle: {} //自定义属性
+        buttonStyle: {}, //自定义属性
+        onClick: function() {}
     }
     constructor(props) {
         super();
     }
+    state = {
+        activeStyle: {}
+    }
+
     componentWillMount() {
 
     }
@@ -78,23 +83,52 @@ class SoButton extends PureComponent {
             case 'plain': style['border'] = 'none'; break;
         }
         return style;
+    } 
+    touchStart(e) {
+        let { type, disabled, color } = this.props;
+        if(disabled) return false;
+        let { activeStyle } = this.state;
+        switch(type) {
+            case 'primary': activeStyle['opacity'] = 0.8; break;
+            case 'default': 
+            case 'border': 
+                activeStyle['background'] = color;
+                activeStyle['color'] = '#fff';
+                break;
+        }
+        this.setState({
+            activeStyle: {...activeStyle}
+        });
+    }
+    touchEnd() {
+        setTimeout(() => {
+            this.setState({
+                activeStyle: {...{}}
+            });
+        }, 100)
     }
 
     render() {
         let {
-            buttonStyle = {},
-            buttonTextStyle = {},
+            buttonStyle,
+            buttonTextStyle,
             icon = '',
             size,
-            borderRadius
+            borderRadius,
+            onClick
         } =  this.props;
         return (
             <View 
                 style={{
-                    'border-radius': borderRadius + 'rpx'
-                    ...this.compuedButtonStyle.call(this) 
-                    ...buttonStyle}} 
+                    'border-radius': borderRadius + 'rpx',
+                    ...this.compuedButtonStyle.call(this) ,
+                    ...buttonStyle,
+                    ...this.state.activeStyle
+                }} 
                 className={this.classesView.call(this)}
+                onTouchStart={this.touchStart.bind(this)}
+                onTouchEnd={this.touchEnd.bind(this)}
+                onClick={onClick}
             >
                 <Text 
                     style={{ 

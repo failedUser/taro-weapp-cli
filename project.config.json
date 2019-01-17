@@ -2,7 +2,7 @@
 	"miniprogramRoot": "dist/",
 	"projectname": "xcx",
 	"description": "售后小程序",
-	"appid": "touristappid",
+	"appid": "wx0e3a976b6e9de5e2",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,

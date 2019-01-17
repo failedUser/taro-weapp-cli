@@ -55,7 +55,6 @@ class SoIcon extends PureComponent {
     render() {
         let sizeProps = this.getBaseStyle();
         let colorProps = this.getColorProps();
-        console.log(sizeProps, colorProps, this.getImage());
         return (
             <View className='icon'>
                 <View style={{
